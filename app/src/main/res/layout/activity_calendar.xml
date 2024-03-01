@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Calendar">
+
+    <LinearLayout
+        android:id="@+id/dashlogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="-1dp">
+
+
+        <TextView
+            android:id="@+id/e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_extrabold"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:text="e"
+            android:textColor="@color/appblue"
+            android:textSize="35sp"/>
+
+
+        <TextView
+            android:id="@+id/pasyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_extrabold"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="4"
+            android:text="Pasyar"
+            android:textColor="@color/blue1"
+            android:textSize="40sp"/>
+
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/notif"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/notif"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <ImageButton
+        android:id="@+id/menu"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/menu"
+        android:layout_marginTop="10dp"
+        />
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/icons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/icons"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp">
+
+        <ImageButton
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:background="@drawable/home"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/news"
+            android:layout_marginStart="25dp"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/maps"
+            android:layout_marginStart="120dp" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/calendar" />
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qrcodebg"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="11dp"
+        android:padding="14dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/imgBtn_QR"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/qrcode" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

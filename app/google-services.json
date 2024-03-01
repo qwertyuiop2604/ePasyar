@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1004550371893",
+    "project_id": "epasyar-aa569",
+    "storage_bucket": "epasyar-aa569.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004550371893:android:770eed7e29e6d9c0980f7c",
+        "android_client_info": {
+          "package_name": "com.example.epasyaaar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrIWOvvicDlUF0HLlU1npXu2GCYPz3A7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
