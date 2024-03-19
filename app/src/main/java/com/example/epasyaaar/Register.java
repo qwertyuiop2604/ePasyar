@@ -20,6 +20,7 @@
     import android.widget.Toast;
 
     import com.google.android.gms.tasks.OnCompleteListener;
+    import com.google.android.gms.tasks.OnSuccessListener;
     import com.google.android.gms.tasks.Task;
     import com.google.android.material.textfield.TextInputEditText;
     import com.google.firebase.auth.AuthResult;
@@ -28,16 +29,22 @@
     import com.google.firebase.auth.FirebaseAuthUserCollisionException;
     import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
     import com.google.firebase.auth.FirebaseUser;
+    import com.google.firebase.firestore.DocumentReference;
+    import com.google.firebase.firestore.FirebaseFirestore;
 
     import java.util.Arrays;
+    import java.util.HashMap;
     import java.util.List;
-    //import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
+    import java.util.Map;
 
     public class Register extends AppCompatActivity {
 
-        TextInputEditText editTextFname, editTextLname, editTextEmail, editTextCountry,editTextPass, editTextConfPass;
+        TextInputEditText editTextFname, editTextLname, editTextEmail, editTextCountry, editTextPass, editTextConfPass;
         Button buttonReg;
         FirebaseAuth mAuth;
+
+        FirebaseFirestore fStore;
+        String userID;
 
         int code;
         private AutoCompleteTextView autoCompleteTextViewSearch;
@@ -47,7 +54,8 @@
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_register);
-            mAuth = FirebaseAuth.getInstance(); // Initialize FirebaseAuth
+            mAuth = FirebaseAuth.getInstance();
+            fStore = FirebaseFirestore.getInstance();
 
             editTextFname = findViewById(R.id.txtbox_Fname);
             editTextLname = findViewById(R.id.txtbox_Lname);
@@ -78,12 +86,23 @@
                     pass = String.valueOf(editTextPass.getText());
                     confpass = String.valueOf(editTextConfPass.getText());
 
+                    // Regular expression to match only letters (no numbers or symbols)
+                    String regex = "^[a-zA-Z]+$";
+
                     if (TextUtils.isEmpty(Fname)) {
                         editTextFname.setError("First Name is required");
                         editTextFname.requestFocus();
                         return;
+                    } else if (!Fname.matches(regex)) {
+                        editTextFname.setError("First Name should contain only letters");
+                        editTextFname.requestFocus();
+                        return;
                     } else if (TextUtils.isEmpty(Lname)) {
                         editTextLname.setError("Last Name is required");
+                        editTextLname.requestFocus();
+                        return;
+                    } else if (!Lname.matches(regex)) {
+                        editTextLname.setError("Last Name should contain only letters");
                         editTextLname.requestFocus();
                         return;
                     } else if (TextUtils.isEmpty(email)) {
@@ -98,7 +117,7 @@
                         editTextPass.setError("Password is required");
                         editTextPass.requestFocus();
                         return;
-                    } else if (pass.length() < 6){
+                    } else if (pass.length() < 6) {
                         editTextPass.setError("Password should be at least 6 digits");
                         editTextPass.requestFocus();
                         return;
@@ -119,6 +138,7 @@
                     registerUser(Fname, Lname, email, country, pass, confpass);
                 }
             });
+
         }
 
         private void registerUser(String fname, String lname, String email, String country, String pass, String confpass) {
@@ -126,11 +146,27 @@
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(Register.this, "Account Created. Verification email sent.", Toast.LENGTH_SHORT).show();
-                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        FirebaseUser currentUser = mAuth.getCurrentUser();
+                        if (currentUser != null) {
+                            userID = currentUser.getUid(); // Assign userID here
 
-                        if (firebaseUser != null) {
-                            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            Toast.makeText(Register.this, "Account Created. Verification email sent.", Toast.LENGTH_SHORT).show();
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
+
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("fName", fname);
+                            user.put("lName", lname);
+                            user.put("email", email);
+                            user.put("country", country);
+                            user.put("password", pass);
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.d(TAG, "onSuccess: user Profile is created for" + userID);
+                                }
+                            });
+
+                            currentUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> emailTask) {
                                     if (emailTask.isSuccessful()) {
@@ -139,16 +175,10 @@
                                         Intent intent = new Intent(Register.this, Login.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
-                                        finish(); //to close Register Activity
-
-                                        // Enter user data into the firebase realtime database
-                                        //ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textEmail, textCountry, textPass);
+                                        finish(); // Close Register Activity
                                     } else {
                                         // Email verification not sent
                                         Toast.makeText(Register.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
-
-
-
                                     }
                                 }
                             });
@@ -162,28 +192,21 @@
 
                         try {
                             throw task.getException();
-                        }
-                        catch (FirebaseAuthWeakPasswordException e){
+                        } catch (FirebaseAuthWeakPasswordException e) {
                             editTextPass.setError("Password is too weak. Add numbers, Capitalized words, and special characters ");
                             editTextPass.requestFocus();
-                        }
-                        catch(FirebaseAuthInvalidCredentialsException e){
+                        } catch (FirebaseAuthInvalidCredentialsException e) {
                             editTextEmail.setError("Your email is invalid");
                             editTextEmail.requestFocus();
-                        }
-                        catch (FirebaseAuthUserCollisionException e){
+                        } catch (FirebaseAuthUserCollisionException e) {
                             editTextEmail.setError("This email is already registered");
                             editTextEmail.requestFocus();
-                        }
-                        catch (Exception e){
+                        } catch (Exception e) {
                             Log.e(TAG, e.getMessage());
                             Toast.makeText(Register.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
-
-
                     }
-                    }
-
+                }
             });
         }
     }

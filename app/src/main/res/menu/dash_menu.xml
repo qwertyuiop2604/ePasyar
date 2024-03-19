@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/g1">
+
+
+        <item
+            android:id="@+id/notification"
+            android:icon="@drawable/account"
+            android:title="Notifications" />
+
+        <item
+            android:id="@+id/Reviews"
+            android:icon="@drawable/account"
+            android:title="Reviews" />
+
+        <item
+            android:id="@+id/recentV"
+            android:icon="@drawable/account"
+            android:title="Recent Visits" />
+
+        <item
+            android:id="@+id/bookMark"
+            android:icon="@drawable/account"
+            android:title="Book Marks" />
+
+    </group>
+
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/g2">
+
+        <item
+            android:id="@+id/priv"
+            android:icon="@drawable/account"
+            android:title="Privacy and Safety"/>
+
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/account"
+            android:title="Settings" />
+
+    </group>
+
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/g3">
+
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/account"
+            android:title="Ask a Question" />
+
+        <item
+            android:id="@+id/TP"
+            android:icon="@drawable/account"
+            android:title="Terms and Policies" />
+
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/account"
+            android:title="About ePasyar" />
+
+    </group>
+
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/g4">
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/account"
+            android:title="Share the app" />
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/g5">
+
+        <item
+            android:id="@+id/out"
+            android:icon="@drawable/account"
+            android:title="Log Out" />
+
+
+    </group>
+
+</menu>

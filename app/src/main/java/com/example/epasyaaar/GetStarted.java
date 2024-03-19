@@ -24,7 +24,7 @@ public class GetStarted extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
 
         if ( v.getId() == R.id.btnGetstarted){
-            startActivity(new Intent(GetStarted.this, Dashboard.class));
+            startActivity(new Intent(GetStarted.this, Login.class));
         }
 
     }

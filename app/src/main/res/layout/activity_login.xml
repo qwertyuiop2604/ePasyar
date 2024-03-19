@@ -13,7 +13,6 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-
         app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
 
@@ -162,7 +161,8 @@
             android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            android:textColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtbox_password"
