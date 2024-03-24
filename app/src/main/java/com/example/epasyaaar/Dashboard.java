@@ -42,7 +42,7 @@
 
 
         ImageButton qr;
-        ImageButton dashMaps;
+        ImageButton dashMaps, dashCalendar, dashNews;
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         ImageButton btn_Drawer;
@@ -68,6 +68,8 @@
 
             dashMaps = findViewById(R.id.dash_maps);
             dashMaps.setOnClickListener(this);
+            dashCalendar = findViewById(R.id.dash_calendar);
+            dashCalendar.setOnClickListener(this);
 
             drawerLayout = findViewById(R.id.drawer_layout);
             navigationView = findViewById(R.id.nav_view);
@@ -172,6 +174,11 @@
         public void onClick(View v) {
             if (v.getId() == R.id.imgBtn_QR) {
                 Intent intent = new Intent(this, QRCode.class);
+                startActivity(intent);
+            }
+
+            if (v.getId() == R.id.dash_calendar) {
+                Intent intent = new Intent(this, Calendar.class);
                 startActivity(intent);
             }
         }

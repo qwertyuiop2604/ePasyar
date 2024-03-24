@@ -52,7 +52,7 @@
         android:id="@+id/menu"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@drawable/menu"
+        android:background="@drawable/baseline_arrow_back_24"
         android:layout_marginTop="10dp"
         />
 

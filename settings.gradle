@@ -16,7 +16,5 @@ dependencyResolutionManagement {
 }
 
 
-
-
 rootProject.name = "ePasyaaar"
-include ':app'
+include ':app', ':library'

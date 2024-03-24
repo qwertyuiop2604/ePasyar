@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calendar">
+    tools:context=".Calendar"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:id="@+id/drawer_layout"
+    tools:openDrawer="start">
+
+    <!-- Main content -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
 
     <LinearLayout
         android:id="@+id/dashlogo"
@@ -65,15 +75,35 @@
         android:layout_marginTop="10dp"
         />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="375dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dashlogo"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/outline"
+            app:headerColor="@color/blue1"/>
+
+    <ImageButton
+        android:id="@+id/btn_addEvent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/calendarView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-31dp"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/add" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dashlogo"/>
-
-
-
-
+        android:layout_below="@+id/calendarView"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/biorhyme_extrabold"
+        android:text="Upcoming Events"
+        android:textSize="22sp" />
 
     <LinearLayout
         android:id="@+id/icons"
@@ -129,6 +159,26 @@
             android:layout_height="60dp"
             android:background="@drawable/qrcode" />
 
+    </RelativeLayout>
 
     </RelativeLayout>
-</RelativeLayout>
+
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/dash_menu" />
+
+    <!-- Transparent view for interaction -->
+    <View
+        android:id="@+id/transparent_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -3,16 +3,10 @@ package com.example.epasyaaar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,12 +33,9 @@ import java.util.Objects;
 
 public class UserProfile extends AppCompatActivity {
 
-    private static final int REQUEST_CAMERA_PERMISSION = 101;
-    private static final int REQUEST_IMAGE_CAPTURE = 102;
     private static final int REQUEST_IMAGE_PICK = 103;
 
     private StorageReference storageReference;
-
 
     TextView fullName, email, country;
     FirebaseAuth fAuth;
@@ -52,7 +44,6 @@ public class UserProfile extends AppCompatActivity {
 
     ImageView userProf;
     ImageButton addProf;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +60,6 @@ public class UserProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         FirebaseUser firebaseUser = fAuth.getCurrentUser();
-
-
 
         if (firebaseUser != null) {
             userID = firebaseUser.getUid();
@@ -112,9 +101,7 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
-
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -142,7 +129,20 @@ public class UserProfile extends AppCompatActivity {
                                                 .setPhotoUri(uri)
                                                 .build();
                                         assert user != null;
-                                        user.updateProfile(request);
+                                        user.updateProfile(request)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        // Update the user's document in Firestore with the image URL
+                                                        updateProfileImageURL(uri.toString());
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(UserProfile.this, "Failed to update profile image in Firebase Auth", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                     }
                                 });
                             }
@@ -154,5 +154,22 @@ public class UserProfile extends AppCompatActivity {
         }
     }
 
-
+    private void updateProfileImageURL(String imageURL) {
+        // Update the user's document in Firestore with the image URL
+        DocumentReference userDocRef = fStore.collection("users").document(userID);
+        userDocRef
+                .update("profileImage", imageURL)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(UserProfile.this, "Profile image updated in Firestore", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UserProfile.this, "Failed to update profile image in Firestore", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }

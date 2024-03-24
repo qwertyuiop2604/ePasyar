@@ -9,22 +9,22 @@
 
 
         <item
-            android:id="@+id/notification"
+            android:id="@+id/menu_personal_Schedule"
             android:icon="@drawable/account"
-            android:title="Notifications" />
+            android:title="Personal Schedule" />
 
         <item
-            android:id="@+id/Reviews"
+            android:id="@+id/menu_eviews"
             android:icon="@drawable/account"
             android:title="Reviews" />
 
         <item
-            android:id="@+id/recentV"
+            android:id="@+id/menu_recentV"
             android:icon="@drawable/account"
             android:title="Recent Visits" />
 
         <item
-            android:id="@+id/bookMark"
+            android:id="@+id/menu_bookMark"
             android:icon="@drawable/account"
             android:title="Book Marks" />
 
@@ -35,12 +35,12 @@
         android:id="@+id/g2">
 
         <item
-            android:id="@+id/priv"
+            android:id="@+id/menu_priv"
             android:icon="@drawable/account"
             android:title="Privacy and Safety"/>
 
         <item
-            android:id="@+id/settings"
+            android:id="@+id/menu_settings"
             android:icon="@drawable/account"
             android:title="Settings" />
 
@@ -51,17 +51,17 @@
         android:id="@+id/g3">
 
         <item
-            android:id="@+id/help"
+            android:id="@+id/menu_help"
             android:icon="@drawable/account"
             android:title="Ask a Question" />
 
         <item
-            android:id="@+id/TP"
+            android:id="@+id/menu_TP"
             android:icon="@drawable/account"
             android:title="Terms and Policies" />
 
         <item
-            android:id="@+id/about"
+            android:id="@+id/menu_about"
             android:icon="@drawable/account"
             android:title="About ePasyar" />
 
@@ -71,7 +71,7 @@
     <group android:checkableBehavior="single"
         android:id="@+id/g4">
         <item
-            android:id="@+id/share"
+            android:id="@+id/menu_share"
             android:icon="@drawable/account"
             android:title="Share the app" />
     </group>
@@ -80,7 +80,7 @@
         android:id="@+id/g5">
 
         <item
-            android:id="@+id/out"
+            android:id="@+id/menu_out"
             android:icon="@drawable/account"
             android:title="Log Out" />
 
