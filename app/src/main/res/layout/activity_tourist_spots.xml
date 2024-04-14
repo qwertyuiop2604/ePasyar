@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Maps">
+    tools:context=".TouristSpots"
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/dashlogo"
@@ -14,8 +15,7 @@
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="-1dp">
-
+        android:paddingTop="1dp">
 
         <TextView
             android:id="@+id/e"
@@ -28,7 +28,7 @@
             android:shadowRadius="2"
             android:text="e"
             android:textColor="@color/appblue"
-            android:textSize="35sp"/>
+            android:textSize="35sp" />
 
 
         <TextView
@@ -42,7 +42,7 @@
             android:shadowRadius="4"
             android:text="Pasyar"
             android:textColor="@color/blue1"
-            android:textSize="40sp"/>
+            android:textSize="40sp" />
 
 
     </LinearLayout>
@@ -55,51 +55,61 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp" />
 
     <ImageButton
         android:id="@+id/menu"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@drawable/menu"
+        android:background="@drawable/baseline_arrow_back_24"
         android:layout_marginTop="10dp"
         />
 
     <TextView
+        android:id="@+id/TS_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_below="@+id/dashlogo"
-        android:fontFamily="@font/biorhyme_extrabold"
-        android:text="Maps"
-        android:textSize="30sp" />
-
-    <android.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="115dp"
-        android:background="@drawable/search"
-        android:padding="3dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
-
-    <include layout="@layout/icons"/>
-
-    <fragment
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_below="@id/dashlogo"
         android:layout_centerInParent="true"
-        android:layout_below="@id/searchView"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/manjari_bold"
+        android:text="Tourist Spot"
+        android:textSize="30sp"
+        android:textColor="@color/black"/>
 
+    <ImageView
+        android:id="@+id/TS_pic"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/TS_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/car_ui_icon_save"
+        android:textColor="@color/black"/>
 
+    <TextView
+        android:id="@+id/txt_descriptionTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_below="@id/TS_pic"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/biorhyme_extrabold"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/TS_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAMPLE TEXT"
+        android:layout_below="@+id/txt_descriptionTS"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:fontFamily="@font/alata"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
 
 </RelativeLayout>
-

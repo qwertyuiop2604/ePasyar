@@ -64,6 +64,14 @@
         android:layout_marginTop="10dp"
         />
 
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/dashlogo"
+        android:src="@color/gray"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"/>
+
 
 
 </RelativeLayout>

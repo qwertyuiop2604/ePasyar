@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/icons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/icons"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp">
+
+        <ImageButton
+            android:id="@+id/option_home"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/home"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"/>
+
+
+        <ImageButton
+            android:id="@+id/option_otop"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/news"
+            android:layout_marginTop="4dp"/>
+
+        <ImageButton
+            android:id="@+id/option_maps"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/maps"
+            android:layout_marginStart="120dp" />
+
+        <ImageButton
+            android:id="@+id/option_events"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/events" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qrcodebg"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+
+        <ImageButton
+            android:id="@+id/option_QR"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/qr" />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

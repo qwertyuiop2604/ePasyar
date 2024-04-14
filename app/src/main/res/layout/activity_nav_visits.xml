@@ -2,9 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Maps">
+    tools:context=".Nav_visits">
 
     <LinearLayout
         android:id="@+id/dashlogo"
@@ -58,48 +59,29 @@
         android:layout_marginRight="10dp"/>
 
     <ImageButton
-        android:id="@+id/menu"
+        android:id="@+id/back"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@drawable/menu"
+        android:background="@drawable/baseline_arrow_back_24"
         android:layout_marginTop="10dp"
         />
 
     <TextView
+        android:id="@+id/txt_ys"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_below="@+id/dashlogo"
+        android:text="Your Recent Visits"
+        android:layout_below="@id/dashlogo"
         android:fontFamily="@font/biorhyme_extrabold"
-        android:text="Maps"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:layout_marginStart="25dp"/>
 
-    <android.widget.SearchView
-        android:id="@+id/searchView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="115dp"
-        android:background="@drawable/search"
-        android:padding="3dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
-
-    <include layout="@layout/icons"/>
-
-    <fragment
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/searchView"
-        android:layout_marginTop="30dp" />
-
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txt_ys"
+        android:layout_marginTop="20dp"/>
 
 
 </RelativeLayout>
-

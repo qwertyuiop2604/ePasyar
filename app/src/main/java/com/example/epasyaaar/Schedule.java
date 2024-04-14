@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -135,6 +136,7 @@ public class Schedule extends AppCompatActivity implements View.OnClickListener 
     }
 
     // Click listener for the buttons
+
     @Override
     public void onClick(View v) {
         if (v == selectDateButton) {
@@ -145,6 +147,8 @@ public class Schedule extends AppCompatActivity implements View.OnClickListener 
             String date = selectDateButton.getText().toString().trim();
             String event = eventTitleText.getText().toString().trim();
 
+            Log.d("Date", "Date selected: " + date); // Add this line to log the selected date
+
             if (!date.isEmpty() && !event.isEmpty()) {
                 saveEventToFirebase(date, event);
             } else {
@@ -152,4 +156,5 @@ public class Schedule extends AppCompatActivity implements View.OnClickListener 
             }
         }
     }
+
 }

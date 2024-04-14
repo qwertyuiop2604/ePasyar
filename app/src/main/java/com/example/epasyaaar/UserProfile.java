@@ -87,7 +87,7 @@ public class UserProfile extends AppCompatActivity {
         if (firebaseUser != null && firebaseUser.getPhotoUrl() != null) {
             Uri uri = firebaseUser.getPhotoUrl();
             // Set User's current Dp in ImageView
-            Picasso.with(UserProfile.this).load(uri).into(userProf);
+            Picasso.get().load(uri).into(userProf);
         }
 
         addProf.setOnClickListener(new View.OnClickListener() {

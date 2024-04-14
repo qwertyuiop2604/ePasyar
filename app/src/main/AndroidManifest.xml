@@ -7,11 +7,16 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <meta-data
+        android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+        android:value="barcode" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +29,18 @@
         android:theme="@style/Theme.EPasyaaar"
         tools:targetApi="31">
         <activity
+            android:name=".calendarsample"
+            android:exported="false" />
+        <activity
+            android:name=".Nav_visits"
+            android:exported="false" />
+        <activity
+            android:name=".QrGen_sample"
+            android:exported="false" />
+        <activity
+            android:name=".TouristSpots"
+            android:exported="false" />
+        <activity
             android:name=".Nav_sched"
             android:exported="false" />
         <activity
@@ -33,7 +50,7 @@
             android:name=".Schedule"
             android:exported="false" />
         <activity
-            android:name=".Calendar"
+            android:name=".Events"
             android:exported="false" />
         <activity
             android:name=".Maps"
@@ -91,6 +108,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBdqUDIt_xWyQT4fB2FiHBFjx6ohtTAcMc" />
     </application>
 
 </manifest>
