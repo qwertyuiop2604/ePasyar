@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="dash.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <style>
+    .row.content {height: 600px}
+    .sidenav {
+      background-color: white;
+      height: 100%;
+    }
+    @media screen and (max-width: 800px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><i class="fas fa-route"></i> ePasyar</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="#section2"><i class="fas fa-user"></i> Profile Account</a></li>
+        <li><a href="#section3"><i class="fas fa-bell"></i> Notifications</a></li>
+        <li><a href="#section4"><i class="fas fa-star"></i> Reviews</a></li>
+        <li><a href="#section5"><i class="fas fa-shield-alt"></i> Privacy & Safety</a></li>
+        <li><a href="#section6"><i class="fas fa-share-alt"></i> Share the App</a></li>
+        <li><a href="#section7"><i class="fas fa-cog"></i> Help & Support</a></li>
+        <li><a href="#section8"><i class="fas fa-file-alt"></i> Terms & Policies</a></li>
+        <li><a href="#section9"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="#section11"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <h2><i class="fas fa-route"></i> ePasyar</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <input type="text" id="search-bar" placeholder="Search...">
+        <div class="text-center">
+          <button id="search-btn" onclick="searchFunction()">Search</button>
+        </div>
+
+       
+        <li><a href="#section1" onclick="showAdminContent()"><i class="fas fa-user"></i> Admin</a></li>
+        <li class="active"><a href="#section1"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="#section2" onclick="redirectToProfile()"><i class="fas fa-user"></i> Profile Account</a></li>
+        <li><a href="#section3" onclick="showNotifContent()"><i class="fas fa-bell"></i> Notifications</a></li>
+        <li><a href="#section4" onclick="redirectToReviews()"><i class="fas fa-star"></i> Reviews</a></li>
+        <li><a href="#section5" onclick="showPrivacyContent()"><i class="fas fa-shield-alt"></i> Privacy & Safety</a></li>
+        <li><a href="#section6" onclick="showShareContent()"><i class="fas fa-share-alt"></i> Share the App</a></li>
+        <li><a href="#section7" onclick="showHelpContent()"><i class="fas fa-cog"></i> Help & Support</a></li>
+        <li><a href="#section8" onclick="showTermsContent()"><i class="fas fa-file-alt"></i> Terms & Policies</a></li>
+        <li><a href="#section9" onclick="showAboutContent()"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="#section11" onclick="showLogoutContent()"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+      </ul><br>
+    </div>
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>ePasyar Statistics</h4>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+            <a href="#sec1"><h4 class="fas fa-users"></i> Users</h4>
+            <p>1,999</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <a href="#sec1"><h4 class="fas fa-hotel"></i> Hotels</h4>
+            <p>25</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <a href="#sec1"><h4 class="fas fa-utensils"></i> Restaurants</h4>
+            <p>66</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <a href="#sec1"><h4 class="fas fa-users"></i> Tourist</h4>
+            <p>30%</p> 
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well">
+            <a href="#sec1"><p class="fas fa-map-marked-alt"></i> Maps</p>
+          </div><div class="col-sm-4">
+</div>
+        </div>
+        <div class="col-sm-4">
+          <div class="well">
+            <a href="#sec1"><p class="fas fa-hotel"></i> Most Visited</p>
+          </div>
+        </div>
+      </div>
+      <div class="well">
+        <h4>Tourists List</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Contact Number</th>
+              <th>Address</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>John</td>
+              <td>Doe</td>
+              <td>@john</td>
+              <td>john123@gmail.com</td>
+              <td>09123456789</td>
+              <td>juan st. laguna</td>
+              <td><button onclick="editTourist(1)">Edit</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jane</td>
+              <td>Doe</td>
+              <td>@jane</td>
+              <td>jane123@gmail.com</td>
+              <td>098831235459</td>
+              <td>juan st. laguna</td>
+              <td><button onclick="editTourist(1)">Edit</button></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Jim</td>
+              <td>Smith</td>
+              <td>@jim</td>
+              <td>jim123@gmail.com</td>
+              <td>098831235459</td>
+              <td>juan st. laguna</td>
+              <td><button onclick="editTourist(1)">Edit</button></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Jim</td>
+              <td>Smith</td>
+              <td>@jim</td>
+              <td>jim123@gmail.com</td>
+              <td>098831235459</td>
+              <td>juan st. laguna</td>
+              <td><button onclick="editTourist(1)">Edit</button></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Jim</td>
+              <td>Smith</td>
+              <td>@jim</td>
+              <td>jim123@gmail.com</td>
+              <td>098831235459</td>
+              <td>juan st. laguna</td>
+              <td><button onclick="editTourist(1)">Edit</button></td>
+            </tr>          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function redirectToProfile() {
+     
+      window.location.href = 'profile.html';
+  }
+</script>
+
+<script>
+  function redirectToReviews() {
+     
+      window.location.href = 'reviews.html';
+  }
+</script>
+<script>
+
+function searchFunction() {
+ 
+  var searchValue = document.getElementById("search-bar").value;
+
+  alert("Searching for: " + searchValue);
+}
+</script>
+</body>
+</html>
