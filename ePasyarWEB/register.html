@@ -4,7 +4,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./register.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-...">
     <title>Register Account</title>
 </head>
@@ -20,6 +20,7 @@
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" pattern="[A-Za-z]+" required>
             
+      
                 <label for="country">Country</label>
                 <input type="text" id="country" name="country" pattern="[A-Za-z]+" required>
             
@@ -30,18 +31,12 @@
                 <input type="password" id="confirm" name="confirm" required>
 
 
-                <button id="btnRegister" type="button" class="centered" onclick="registrationAccount()">Register</button>
+                <button id="btnRegister" >Register</button>
             </form>
     </div>
-    
+
+    <script type="module" src="/Javascript/register.js"></script>
+
 </body>
 </html>
-<script>
-    function registrationAccount() {
-    // Perform validation and registration process here
 
-    // Assuming registration is successful, redirect to dashboard
-    window.location.href = 'dash.html';
-}
-</script>
-<script src="../registration/register.js"></script>

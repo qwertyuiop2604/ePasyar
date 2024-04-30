@@ -1,15 +1,13 @@
 
+
 *
 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
-img{
-  width: 200px;
-  height: 200px;
-} 
   .material-icons-outlined {
     vertical-align: middle;
     line-height: 1px;
@@ -20,7 +18,7 @@ img{
     }
     
     .text-blue {
-      color: #1D5D9B;
+      color: #032d89;
     }
     
     .text-red {
@@ -36,10 +34,10 @@ img{
     }
   
   .font-weight-bold {
-    font-weight: 600;
+    font-weight: 300;
   }
   
-  .grid-container {
+  /*.grid-container {
     display: grid;
     grid-template-columns: 260px 1fr 1fr 1fr;
     grid-template-rows: 0.2fr 3fr;
@@ -73,7 +71,7 @@ img{
  #sidebar {
   grid-area: sidebar;
   height: 100%;
-  background-color: #1D5D9B;
+  background-color: #032d89;
   color: white;
   overflow-y: auto;
   transition: all 0.5s;
@@ -122,7 +120,7 @@ list-style: none;
 padding: 10px 20px 10px 10px;
 display: none;
 }
-.dropdown-container{
+/*.dropdown-container{
 color: #e6e8ed;
 padding-top: 10px;
 margin-top: 20px;
@@ -150,7 +148,7 @@ margin-top: -20px;
 }
 
 /* On mouse-over */
-.dropdown-btn:hover {
+/*.dropdown-btn:hover {
 background-color: rgba(255, 255, 255, 0.2);
 }
 .con-lic:hover{
@@ -233,12 +231,13 @@ th, tr, td{
     text-transform: uppercase;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #1D5D9B; 
+    background-color: rgb(39, 88, 147); 
     color: white;
     cursor: pointer;
 }
 tr th, tr th{
     background-color: gainsboro;
+   
 }
 .table tr:not(:first-child){
     cursor: pointer;
@@ -253,7 +252,7 @@ h4{
   cursor: pointer;
 }
 .selected-row{
-  background-color: #1D5D9B !important;
+  background-color: rgb(19, 42, 172) !important;
   color: white;
 }
 #srchText{
@@ -379,6 +378,17 @@ h4{
   font-size: 14px;
   color: black;
 }
+textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100px; /* Set the height as needed */
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
 .dashboard-container {
   margin: 50px auto;
   padding: 20px;
@@ -438,7 +448,6 @@ label{
   cursor: pointer;
   color: #F4D160;
 }
-
 /* popup modal for edit account */
 .edit-container{
   background-color: #1D5D9B;
@@ -463,6 +472,23 @@ label{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 14px;
   color: black;
+}
+textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100px; /* Set the height as needed */
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+#password{
+  font-size: 12px;
+  box-sizing: 35px;
+  size: 35px;
+  height: 150px;
 }
 
 .dashboard-container {
@@ -523,4 +549,172 @@ label{
   z-index: 1;
   cursor: pointer;
   color: #F4D160;
+}
+
+/* EDIT MODAL */
+.modal-edit{
+  background-color: white;
+  user-select: none;
+  border: 1px solid #b3b3b3;
+  box-shadow: 5px 5px 5px rgb(70, 69, 69);
+  color: black;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s, top 0.4s;
+  border-radius: 10px;
+  display: none;
+}
+.close-modal-edit{
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  font-size: 18px;
+  z-index: 1;
+  cursor: pointer;
+}
+.modal-content-edit{
+  position: relative;
+  display: flex;   
+}
+.edit-info{
+  display: block;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.edit{
+  font-weight: bold;
+  width: 170px;
+}
+.modal-form-edit{
+  margin-left: 20px;
+}
+.modal-input-edit{
+  width: 280px;
+  padding: 0 5px 0 5px;
+  height: 30px;
+  font-size: 14px;
+  background: none;
+  outline: none;
+  text-transform: uppercase;
+  border-radius: 5px;  
+}
+.modal-input-edit-pass{
+  width: 280px;
+  padding: 0 5px 0 5px;
+  height: 30px;
+  font-size: 14px;
+  background: none;
+  outline: none;
+  border-radius: 5px;  
+}
+.modal-input-edit-btn{
+  height: 40px;
+  width: 70%;
+  border: 1px solid;
+  background-color: var(--blueButton);
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+  margin: 20px 0 0 80px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px; 
+  margin-bottom: 5px;
+  margin-top: 20px;
+  align-items: center;
+}
+.modal-input-edit-btn:hover{
+  background-color: rgb(48, 83, 211);
+  transition: all 0.4s ease-out;
+}
+.modal-input::placeholder{
+  color: var(--lightgray);
+}
+.edit-info p{
+  font-size: 11px;
+  color: var(--errorColor);
+  display: none;
+}
+.edit-info.error input{
+  position: relative;
+  border: 1px solid var(--errorColor);
+  border-radius: 2px;
+}
+.edit-info.valid input{
+  position: relative;
+  border: 1px solid var(--validColor);
+  border-radius: 2px;
+}
+.edit-info.error p{
+  display: block;
+}
+/* .modal#edit-modal.active{
+  filter: blur(10px);
+  user-select: none;
+} */
+
+
+#delete_acc_modal{
+  width: 550px;
+  /* height: 200px; */
+  background-color: white;
+  user-select: none;
+  border: 1px solid #b3b3b3;
+  box-shadow: 5px 5px 5px rgb(70, 69, 69);
+  color: black;
+  padding: 20px;
+  /* visibility: hidden; */
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s, top 0.4s;
+}
+.cnfrm_modal{
+  width: 550px;
+  /* height: 200px; */
+  background-color: white;
+  user-select: none;
+  border: 1px solid #b3b3b3;
+  box-shadow: 5px 5px 5px rgb(70, 69, 69);
+  color: black;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s, top 0.4s;
+  display: none;
+}
+.cnfrm_modal h1, #delete_acc_modal h1{
+  letter-spacing: 3px;
+  text-align: center;
+}
+#cnl2{
+  margin-left: 300px;
+}
+.cnl{
+  margin-left: 300px;
+}
+
+.btn button{
+	padding: 4px;
+	width: 100px; 
+  outline: none;
+	padding: 10px;
+  margin: 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: var(--blueButton);
+  color:white;
+}
+.btn{
+    display: flex;
 }

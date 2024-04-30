@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dashboard Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/CSS/events.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <h2>ePasyar Events</h2>
+
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#section1"><i class="fas fa-user"></i> Admin</a></li>
+            <li><a href="#section1" id="dash"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#section2" id="profile"><i class="far fa-user"></i> Account Management</a></li>
+            <li class="active"><a href="#section12" id="events"><i class="fas fa-calendar-alt"></i> Events</a></li>
+            <li><a href="#section3" id="notifs"><i class="fas fa-bell"></i> Notifications</a></li>
+            <li><a href="#section4" id="reviews"><i class="fas fa-star"></i> Reviews</a></li>
+            <li><a href="#section5" id="privacy"><i class="fas fa-shield-alt"></i> Privacy & Safety</a></li>
+            <li><a href="#section6" id="share"><i class="fas fa-share-alt"></i> Share the App</a></li>
+            <li><a href="#section7" id="help"><i class="fas fa-cog"></i> Help & Support</a></li>
+            <li><a href="#section8" id="terms"><i class="fas fa-file-alt"></i> Terms & Policies</a></li>
+            <li><a href="#section9" id="about"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#section11" id="logout"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+
+          </ul><br>
+        </div>
+
+        <main class="main-container"  id="blur">
+
+            <div class="main2">
+                <div class="btn_useracc">
+                  <button id="bck">Back</button>
+                  <button class="enable_acc" id="enabled" onclick="toggle3()">Retrieve Account</button>
+                    <div>
+                      <input type="text" id="srchText" placeholder="Search" onkeyup="searchAppID()">
+                    </div>  
+                </div>
+    
+                <div class="outer-wrapper">
+                <div class="table-wrapper">
+                <table id="table" class="table" style="width:100%">
+                    <tr>
+                        
+                        <th>Deleted By</th>
+                        <th>Event Name</th>
+                        <th>Event Date</th>
+                        <th>Event Description</th>
+                        <th>Deleted On</th>
+    
+                    </tr>
+                <tbody id="tbody1"></tbody>                                                       
+                </table>
+            </div>
+            </div>
+            </div>
+            
+          </main>
+        </div>
+          <!-- End Main --> 
+
+
+    
+    <script type="text/javascript">   
+  
+        function toggle3(){
+              var blur = document.getElementById('blur');
+              blur.classList.toggle('active');
+  
+              var popup = document.getElementById('cnfrm_modal_enable');
+              popup.classList.toggle('active');
+        } 
+
+        const searchAppID = () => {
+            let filter =  document.getElementById('srchText').value.toUpperCase();
+            let mytable = document.getElementById('tbody1');
+            let tr = mytable.getElementsByTagName('tr');
+  
+            for(var i=0; i<tr.length; i++){
+                let td = tr[i].getElementsByTagName('td')[0];
+                let td2 = tr[i].getElementsByTagName('td')[1]; 
+                let td3 = tr[i].getElementsByTagName('td')[2]; 
+                let td4 = tr[i].getElementsByTagName('td')[3]; 
+                let td5 = tr[i].getElementsByTagName('td')[4]; 
+  
+                if (td || td2 || td3 || td4 || td5){  
+  
+                    let textvalue = td.textContent || td.innerHTML;
+                    let textvalue2 = td2.textContent || td2.innerHTML;
+                    let textvalue3 = td3.textContent || td3.innerHTML;
+                    let textvalue4 = td4.textContent || td4.innerHTML;
+                    let textvalue5 = td5.textContent || td5.innerHTML;
+  
+                    if(textvalue.toUpperCase().indexOf(filter) > -1 || textvalue2.toUpperCase().indexOf(filter) > -1 || textvalue3.toUpperCase().indexOf(filter) > -1 || textvalue4.toUpperCase().indexOf(filter) > -1 || textvalue5.toUpperCase().indexOf(filter) > -1){
+                        tr[i].style.display = '';
+                    }
+                    else{
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+  
+    </script>
+
+
+      <script type="module" src="/Javascript/archives.js"></script>
+</body>
+
+</html>

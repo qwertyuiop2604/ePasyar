@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard Panel</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/CSS/addEvent.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+        <body>
+            <div class="grid-container"  id="blur">
+
+                <header class="header">
+                  <div class="menu-icon" onclick="openSidebar()">
+                    <span class="material-icons-outlined"></span>
+                  </div>
+                  <div class="header-right">
+                  </div>
+                </header>
+                <h1>ePasyar Events</h1>
+                <div class="container-fluid">
+                    <div class="row content">
+                      <div class="col-sm-3 sidenav hidden-xs">
+                        <ul class="nav nav-pills nav-stacked">
+                          <li><a href="#section1" ><i class="fas fa-user"></i> Admin</a></li>
+                          <li class="active"><a href="#section1"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                          <li><a href="#section2" id= "profile" ><i class="far fa-user"></i> Account Management</a></li>
+                          <li><a href="#section12" id= "events" ><i class="fas fa-calendar-alt"></i> Events</a></li>
+                          <li><a href="#section3" id= "notifs" ><i class="fas fa-bell"></i> Notifications</a></li>
+                          <li><a href="#section4" id= "reviews" ><i class="fas fa-star"></i> Reviews</a></li>
+                          <li><a href="#section5" id= "privacy" ><i class="fas fa-shield-alt"></i> Privacy & Safety</a></li>
+                          <li><a href="#section6" id= "share" ><i class="fas fa-share-alt"></i> Share the App</a></li>
+                          <li><a href="#section7" id= "help" ><i class="fas fa-cog"></i> Help & Support</a></li>
+                          <li><a href="#section8" id= "terms" ><i class="fas fa-file-alt"></i> Terms & Policies</a></li>
+                          <li><a href="#section9" id= "about" ><i class="fas fa-info-circle"></i> About</a></li>
+                          <li><a href="#section11" id= "logout" ><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+                  
+                        </ul><br>
+                      </div>
+                      <main class="main-container">
+
+                        <div class="main2">
+                            <div class="btn_useracc">
+                                <button class="add_acc" onclick="toggle()">Add</button>
+                                <button class="edit_acc" id="edit_acc" onclick="toggle2()">Edit</button>
+                                <button id="delete_acc" onclick="toggle3()">Delete</button>
+                                <div>
+                                  <button id="archived_acc" >See Archives</button>
+                                </div>
+                      
+                            <input type="text" id="srchText" placeholder="Search" onkeyup="searchAppID()">
+                                
+                            </div>
+                            <div class="outer-wrapper">
+                            <div class="table-wrapper">
+                            <table id="table" class="table" style="width:100%">
+                                <tr>
+                                    
+                                    <th>Event Name</th>
+                                    <th>Event Date</th>
+                                    <th>Event Description</th>
+                                    <th>Event Photos</th>
+                               
+                                </tr>
+                            <tbody id="tbody1"></tbody>                                                       
+                            </table>
+                        </div>
+                        </div>
+                        </div>
+                        
+                      </main>
+               
+                    <h1>Create Events</h1>
+
+                                 
+                  
+                    <div class="modal-content-create">
+                        <form action="/" class="modal-form" id="form" autocomplete="off">
+          
+                          <div class="info">
+                            <label class="create">Event Name: </label> 
+                            <div class="form-validation">                     
+                              <input type="text" class="modal-input" id="name" name="name">
+                            
+                            </div>
+                          </div>
+                          
+                          <div class="info">
+                            <label class="create">Event Date: </label>
+                            <div class="form-validation">    
+                              <input type="text" class="modal-input" id="date" name="date" >
+                             
+                            </div>
+                          </div>
+                          
+          
+                          <div class="info">
+                            <label class="create">Event Description: </label>
+                            <div class="form-validation">   
+                              <input type="text" class="modal-input" id="desc" name="desc">
+                              
+                            </div>
+                          </div>
+                           
+                          <div class="info">
+                            <label class="create">Event Photos: </label>
+                            <div class="form-validation">     
+                              <input type="text" class="modal-input" id="photos" name="photos">
+                            </div>
+                          </div>
+                          
+                          
+                        
+                          
+                          <input type="submit" id="btn" class="modal-input-btn" value="Create Event">
+                        </form>
+                     </div>
+                </div>
+              </div>
+               
+              <script type="module" src="/Javascript/addEvent.js"></script>
+        </body>
+    
+</html>

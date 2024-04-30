@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
+/* @import url('a_modal.css'); */
+
+:root {
+  --errorColor: #f00e0e;
+  --validColor: #0add0a;
+  --blueButton: rgb(19, 42, 172);
+  --lightgray: #b4b4b4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: 1px;
+}
+
+.text-primary {
+  color: #666666;
+}
+
+.text-blue {
+  color: #032d89;
+}
+
+.text-red {
+  color: #cc3c43;
+}
+
+.text-green {
+  color: #367952;
+}
+
+.text-orange {
+  color: #f5b74f;
+}
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    "sidebar header header header"
+    "sidebar main main main";
+  height: 100vh;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.header {
+  grid-area: header;
+  height: 70px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-icon {
+  display: none;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #032d89;
+  color: white;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title>span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 15px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebar-list>a {
+  text-decoration: none;
+  color: white;
+}
+
+#sidebar ul ul li {
+  list-style: none;
+  padding: 10px 20px 10px 10px;
+  display: none;
+}
+
+.dropdown-container {
+  color: #e6e8ed;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+.dropdown-container .con-lic,
+.dropdown-container .con-mv {
+  padding: 20px 15px 0px 20px;
+  margin-top: -20px;
+}
+
+.dropdown-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar-list-item1 button {
+  padding: 20px 15px 20px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: default;
+  outline: none;
+}
+
+/* On mouse-over */
+.dropdown-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.con-lic:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.con-mv:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main content */
+.main {
+  margin-left: 200px;
+  /* Same as the width of the sidenav */
+  font-size: 20px;
+  /* Increased text to enable scrolling */
+  /* padding: 0px 10px; */
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+      the z-index of the ApexCharts is 11
+      we want the z-index of the sidebar higher so that
+      the charts are not showing over the sidebar 
+      on small screens
+    */
+  z-index: 12 !important;
+}
+
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-title>p {
+  font-size: 20px;
+}
+
+table tr {
+  padding: 4px;
+}
+
+th,
+tr,
+td {
+  padding: 7px;
+  text-align: left;
+}
+
+.btn_useracc button{
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  width: 100px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(223, 217, 217);
+  cursor: pointer;
+}
+#enabled{
+  /* padding:10px; */
+  width: 150px;
+}
+.btn button{
+  padding: 4px;
+  padding: 10px;
+  margin: 10px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  cursor: pointer;
+  border:1px solid grey;
+  color:black;
+}
+.grid-container#blur.active {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+tr th,
+tr th {
+  background-color: gainsboro;
+}
+
+.table tr:not(:first-child) {
+  cursor: pointer;
+  background-color: #f2f2f23b;
+}
+
+.table tr:hover {
+  background: gainsboro;
+}
+
+h4 {
+  align-items: end;
+  text-align: end;
+  cursor: pointer;
+}
+
+.selected-row {
+  background-color: rgb(19, 42, 172) !important;
+  color: white;
+}
+.btn_useracc button {
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(209, 207, 207);
+  cursor: pointer;
+}
+
+#srchText {
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 18%;
+  right: 2%;
+  outline: none;
+  border: 1px solid grey;
+  width: 350px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 5px;
+  padding-left: 5px;
+  text-transform: uppercase;
+  /* margin-bottom: 10px; */
+}
+
+#cnfrm_modal_enable {
+  width: 550px;
+  /* height: 200px; */
+  background-color: white;
+  user-select: none;
+  border: 1px solid #b3b3b3;
+  box-shadow: 5px 5px 5px rgb(70, 69, 69);
+  color: black;
+  padding: 20px;
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.4s, top 0.4s;
+}
+
+#cnfrm_modal_enable h1 {
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+#cnl {
+  margin-left: 300px;
+}
+
+.btn {
+  display: flex;
+}
+/* Medium <= 992px */
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+    cursor: pointer;
+  }
+
+  .sidebar-title>span {
+    display: inline;
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  body {
+    overflow-y: hidden;
+    /* Hide vertical scrollbar */
+    overflow-x: hidden;
+    /* Hide horizontal scrollbar */
+  }
+
+  .outer-wrapper {
+    margin: 10px;
+    margin-left: -1px;
+    margin-right: 30px;
+    width: 100%;
+    max-width: fit-content;
+    max-height: fit-content;
+  }
+  .table-wrapper {
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: fit-content;
+    max-height: 66.4vh;
+    margin-top: 22px;
+    margin: 15px;
+    padding-bottom: 20px;
+  }
+
+  .content-table {
+    max-width: 200%;
+
+
+  }
+
+  /* Extra Small <= 576px */
+  @media screen and (max-width: 576px) {
+    .header-left {
+      display: none;
+    }
+  }
+}
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/CSS/editTourist.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <style>
+    table, th, td {
+      border:1px solid black;
+    }
+    table {
+      margin: 0 auto;
+    }
+   
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>ePasyar Events</h2>
+    
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="#section1" ><i class="fas fa-user"></i> Admin</a></li>
+            <li ><a href="#section1"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#section2" id= "profile" ><i class="far fa-user"></i> Account Management</a></li>
+            <li><a href="#section12" id= "events" ><i class="fas fa-calendar-alt"></i> Events</a></li>
+            <li ><a href="#section3" id= "notifs" ><i class="fas fa-bell"></i> Notifications</a></li>
+            <li><a href="#section4" id= "reviews" ><i class="fas fa-star"></i> Reviews</a></li>
+            <li><a href="#section5" id= "privacy" ><i class="fas fa-shield-alt"></i> Privacy & Safety</a></li>
+            <li><a href="#section6" id= "share" ><i class="fas fa-share-alt"></i> Share the App</a></li>
+            <li><a href="#section7" id= "help" ><i class="fas fa-cog"></i> Help & Support</a></li>
+            <li><a href="#section8" id= "terms" ><i class="fas fa-file-alt"></i> Terms & Policies</a></li>
+            <li><a href="#section9" id= "about" ><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#section11" id= "logout" ><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+    
+          </ul><br>
+        </div>
+    
+  <div class="container">
+<h2>ePasyar Tourist List</h2>
+
+<table class="table" style="width:70%">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Contact Number</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@john</td>
+      <td>john123@gmail.com</td>
+      <td>09123456789</td>
+      <td>juan st. laguna</td>
+      <td><button onclick="editTourist(1)">Edit</button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane</td>
+      <td>Doe</td>
+      <td>@jane</td>
+      <td>jane123@gmail.com</td>
+      <td>098831235459</td>
+      <td>juan st. laguna</td>
+      <td><button onclick="editTourist(2)">Edit</button></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Jim</td>
+      <td>Smith</td>
+      <td>@jim</td>
+      <td>jim123@gmail.com</td>
+      <td>098831235459</td>
+      <td>juan st. laguna</td>
+      <td><button onclick="editTourist(3)">Edit</button></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Jim</td>
+      <td>Smith</td>
+      <td>@jim</td>
+      <td>jim123@gmail.com</td>
+      <td>098831235459</td>
+      <td>juan st. laguna</td>
+      <td><button onclick="editTourist(4)">Edit</button></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Jim</td>
+      <td>Smith</td>
+      <td>@jim</td>
+      <td>jim123@gmail.com</td>
+      <td>098831235459</td>
+      <td>juan st. laguna</td>
+      <td><button onclick="editTourist(5)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
+<button onclick="goBack()">Back</button>
+<script type="module" src="/Javascript/editTourist.js"></script>
+</body>
+</html>
