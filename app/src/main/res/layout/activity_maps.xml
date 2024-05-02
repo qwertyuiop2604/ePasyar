@@ -10,13 +10,17 @@
         android:id="@+id/dashlogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="-1dp">
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/menu"
+            android:layout_marginTop="10dp" />
 
 
+        <!-- Logo TextViews -->
         <TextView
             android:id="@+id/e"
             android:layout_width="wrap_content"
@@ -28,8 +32,8 @@
             android:shadowRadius="2"
             android:text="e"
             android:textColor="@color/appblue"
-            android:textSize="35sp"/>
-
+            android:textSize="35sp"
+            android:layout_marginStart="10dp"/>
 
         <TextView
             android:id="@+id/pasyar"
@@ -42,28 +46,31 @@
             android:shadowRadius="4"
             android:text="Pasyar"
             android:textColor="@color/blue1"
-            android:textSize="40sp"/>
+            android:textSize="40sp" />
+
+        <ImageButton
+            android:id="@+id/top_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/search1"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+
+            />
+
+        <ImageButton
+            android:id="@+id/notif"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/notif"
+
+            />
 
 
     </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/notif"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/notif"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"/>
-
-    <ImageButton
-        android:id="@+id/menu"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/menu"
-        android:layout_marginTop="10dp"
-        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,7 +90,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="115dp"
-        android:background="@drawable/search"
+        android:background="@drawable/outline"
         android:padding="3dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"/>

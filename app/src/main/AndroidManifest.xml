@@ -29,6 +29,18 @@
         android:theme="@style/Theme.EPasyaaar"
         tools:targetApi="31">
         <activity
+            android:name=".OverallSearch_Establishment"
+            android:exported="false" />
+        <activity
+            android:name=".OverallSearch_TouristSpot"
+            android:exported="false" />
+        <activity
+            android:name=".Establishment"
+            android:exported="false" />
+        <activity
+            android:name=".OverallSearch"
+            android:exported="false" />
+        <activity
             android:name=".calendarsample"
             android:exported="false" />
         <activity

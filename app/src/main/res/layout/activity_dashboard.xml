@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="start"
     android:background="@color/white"
-    android:fitsSystemWindows="true"
     tools:context=".Dashboard"
-    tools:openDrawer="start">
+    android:orientation="vertical"
+   >
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_layout"
+        tools:openDrawer="start"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start">
 
     <!-- Main content -->
     <RelativeLayout
@@ -61,17 +67,29 @@
                 android:textSize="40sp" />
 
             <ImageButton
+                android:id="@+id/top_search"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/search1"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"
+
+                />
+
+            <ImageButton
                 android:id="@+id/notif"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/notif"
-                android:layout_marginStart="125dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/notif"
 
                 />
 
 
         </LinearLayout>
+
 
 
         <!-- ScrollView for Welcome Text -->
@@ -96,20 +114,29 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/manjari_bold"
                     android:text="Welcome to Vigan! "
-                    android:textSize="25sp" />
+                    android:textSize="25sp"
+                    android:textColor="@color/black"/>
 
 
 
                 <VideoView
                     android:id="@+id/dash_video"
                     android:layout_width="350dp"
-                    android:layout_height="350dp" />
+                    android:layout_height="200dp"
 
 
+                    />
 
-
-
-
+                <TextView
+                    android:id="@+id/dash_viganDescription"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:text="   "
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/manjari"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -119,6 +146,7 @@
                     android:fontFamily="@font/manjari_bold"
                     android:text="Suggested for you"
                     android:textSize="24sp"
+                    android:textColor="@color/black"
                     android:layout_gravity="left" />
 
             </LinearLayout>
@@ -129,22 +157,25 @@
 
     </RelativeLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/dash_menu" />
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header"
+            app:menu="@menu/dash_menu" />
 
-    <!-- Transparent view for interaction -->
-    <View
-        android:id="@+id/transparent_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:clickable="true"
-        android:focusable="true" />
+        <!-- Transparent view for interaction -->
+        <View
+            android:id="@+id/transparent_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
 
 
-</androidx.drawerlayout.widget.DrawerLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

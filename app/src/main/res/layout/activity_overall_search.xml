@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OverallSearch"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/dashlogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/baseline_arrow_back_24"
+            android:layout_marginTop="10dp" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/overallSearch"
+            android:layout_width="325dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/outline"
+            android:layout_marginStart="10dp"
+            app:queryHint="Search"
+            app:iconifiedByDefault="false"/>
+
+        <ImageButton
+            android:id="@+id/filter"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/filter"
+            android:layout_marginTop="15dp" />
+
+
+
+        />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

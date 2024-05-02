@@ -56,6 +56,9 @@ public class Maps extends AppCompatActivity implements OnMapReadyCallback {
         ImageView homeImageView = findViewById(R.id.option_home);
         homeImageView.setOnClickListener(iconClickListener);
 
+        ImageView searchImageView = findViewById(R.id.top_search);
+        searchImageView.setOnClickListener(iconClickListener);
+
         mapSearchView = findViewById(R.id.searchView);
 
 

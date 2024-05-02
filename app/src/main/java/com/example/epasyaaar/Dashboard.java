@@ -4,9 +4,11 @@ import static com.google.android.gms.vision.L.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -17,6 +19,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -25,14 +28,21 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
 
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.activity.result.ActivityResultLauncher;
 
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Dashboard extends AppCompatActivity implements View.OnClickListener {
 
@@ -62,9 +72,6 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
 
         iconClickListener = new IconClickListener(this, barLauncher);
 
-        ImageView qrCodeImageView = findViewById(R.id.option_QR);
-        qrCodeImageView.setOnClickListener(iconClickListener);
-
         ImageView eventsImageView = findViewById(R.id.option_events);
         eventsImageView.setOnClickListener(iconClickListener);
 
@@ -76,6 +83,9 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
 
         ImageView homeImageView = findViewById(R.id.option_home);
         homeImageView.setOnClickListener(iconClickListener);
+
+        ImageView searchImageView = findViewById(R.id.top_search);
+        searchImageView.setOnClickListener(iconClickListener);
 
         //Drawer functions
 
@@ -121,6 +131,26 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
             return true;
         });
 
+        DocumentReference descRef = db.collection("mob_dash").document("Vigan Description");
+        descRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    String viganDescription = documentSnapshot.getString("Description");
+                    TextView descVigan = findViewById(R.id.dash_viganDescription);
+                    descVigan.setText(viganDescription);
+                } else {
+                    Log.d(TAG, "Document does not exist");
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Error retrieving document", e);
+            }
+        });
+
+
 
 
 
@@ -151,21 +181,53 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         barLauncher.launch(option);
     }
 
-    private void showResultDialog(String contents) {
-        /*runOnUiThread(() -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(Dashboard.this);
-            builder.setTitle("Result");
-            builder.setMessage(contents);
-            builder.setPositiveButton("OK", (dialog, which) -> {
-                dialog.dismiss();
-            });
-            builder.show();
-        });*/
-        Log.d("Dashboard", "Scanned document ID: " + contents); // Log the scanned document ID
-        Intent intent = new Intent(Dashboard.this, TouristSpots.class);
-        intent.putExtra("documentId", contents);
-        startActivity(intent);
+    private void showResultDialog(final String contents) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Dashboard.this);
+                builder.setTitle("Please select the number of tourists:");
+
+                // Create a number picker dialog
+                final NumberPicker numberPicker = new NumberPicker(Dashboard.this);
+                numberPicker.setMinValue(1);
+                numberPicker.setMaxValue(100); // Set the maximum number of tourists
+                builder.setView(numberPicker);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int numberOfTourists = numberPicker.getValue();
+                        int scansToAdd = numberOfTourists;
+
+                        Log.d("Dashboard", "Scanned document ID: " + contents);
+
+                        Map<String, Object> scanData = new HashMap<>();
+                        scanData.put("documentId", contents);
+                        scanData.put("currentUserId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                        FirestoreManager firestoreManager = new FirestoreManager();
+                        firestoreManager.updateTotalScansAndUsers(scanData, scansToAdd);
+
+                        Intent intent = new Intent(Dashboard.this, TouristSpots.class);
+                        intent.putExtra("documentId", contents);
+                        intent.putExtra("numberOfTourists", numberOfTourists);
+                        startActivity(intent);
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.show();
+            }
+        });
     }
+
 
 
 

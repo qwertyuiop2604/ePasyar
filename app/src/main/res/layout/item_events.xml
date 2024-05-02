@@ -9,18 +9,20 @@
     android:background="@drawable/outline"
     android:layout_centerInParent="true">
 
-    <LinearLayout
+      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
 
         <TextView
+            android:id="@+id/event_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="40sp"
-            android:fontFamily="@font/biorhyme_extrabold"/>
+            android:text="Event Name"
+            android:textSize="20sp"
+            android:fontFamily="@font/biorhyme_extrabold"
+            android:textAlignment="center"/>
 
         <ImageView
             android:id="@+id/event_pic"
@@ -29,11 +31,13 @@
             android:background="@drawable/heart"
             android:layout_gravity="center"/>
         <TextView
+            android:id="@+id/event_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event Name"
-            android:textSize="30sp"
-            android:fontFamily="@font/manjari_bold"/>
+            android:text="Description"
+            android:textSize="20sp"
+            android:fontFamily="@font/manjari_bold"
+            android:textAlignment="center"/>
 
     </LinearLayout>
 

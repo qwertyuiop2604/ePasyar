@@ -12,7 +12,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TouristSpots extends AppCompatActivity {
 
@@ -29,27 +34,14 @@ public class TouristSpots extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance(); // Initialize Firestore database
         mAuth = FirebaseAuth.getInstance(); // Initialize Firebase Authentication
-        firestoreManager = new FirestoreManager(); // Initialize FirestoreManager
 
         // Get the scanned document ID passed from the previous activity
         String documentId = getIntent().getStringExtra("documentId");
 
-        // Get the current user ID
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            currentUserId = currentUser.getUid(); // Get current user's ID
-        } else {
-            // Handle the case where user is not signed in
-            Log.e(TAG, "Current user is null");
-            return;
-        }
-
-        if (documentId != null) {
-            // Update total scans count and store scanned user ID
-            firestoreManager.updateTotalScansAndUsers(documentId, currentUserId);
-
+        // Check if the document ID is not null or empty
+        if (documentId != null && !documentId.isEmpty()) {
             // Get the document reference using the scanned document ID
-            DocumentReference docRef = db.collection("v_ts").document(documentId);
+            DocumentReference docRef = db.collection("vigan_establishments").document(documentId);
             docRef.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
@@ -76,8 +68,9 @@ public class TouristSpots extends AppCompatActivity {
                 }
             });
         } else {
-            Log.e(TAG, "Document ID is null");
+            Log.e(TAG, "Document ID is null or empty");
             // Handle the case where documentId is null, maybe show an error message or finish the activity
         }
     }
+
 }

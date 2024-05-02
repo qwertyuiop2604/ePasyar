@@ -40,6 +40,9 @@ public class News extends AppCompatActivity {
         ImageView homeImageView = findViewById(R.id.option_home);
         homeImageView.setOnClickListener(iconClickListener);
 
+        ImageView searchImageView = findViewById(R.id.top_search);
+        searchImageView.setOnClickListener(iconClickListener);
+
 
     }
 }

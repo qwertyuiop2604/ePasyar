@@ -60,8 +60,8 @@ public class Nav_visits extends AppCompatActivity {
                                 continue; // Skip this document
                             }
 
-                            // Fetch name and photo URL from the "v_ts" collection using the document ID
-                            firestoreDB.collection("v_ts").document(documentId)
+                            // Fetch name and photo URL from the "vigan_establishments" collection using the document ID
+                            firestoreDB.collection("vigan_establishments").document(documentId)
                                     .get()
                                     .addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {

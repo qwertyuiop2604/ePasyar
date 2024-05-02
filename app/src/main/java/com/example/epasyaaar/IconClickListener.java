@@ -28,6 +28,9 @@ public class IconClickListener implements View.OnClickListener {
         } else if (v.getId() == R.id.option_home) {
             navigateTo(Dashboard.class);
         }
+        else if (v.getId() == R.id.top_search) {
+            navigateTo(OverallSearch.class);
+        }
     }
 
 
