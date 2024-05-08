@@ -49,16 +49,6 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/notif"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/notif"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"/>
-
-    <ImageButton
         android:id="@+id/back"
         android:layout_width="45dp"
         android:layout_height="45dp"

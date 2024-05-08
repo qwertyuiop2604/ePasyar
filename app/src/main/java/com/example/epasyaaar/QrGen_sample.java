@@ -33,7 +33,7 @@ public class QrGen_sample extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        DocumentReference docRef = db.collection("vigan_establishments").document("H0nHGkuxI1ad4pySdhQH");
+        DocumentReference docRef = db.collection("vigan_establishments").document("4H2sFyVFuicKrAGy4VPz");
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {

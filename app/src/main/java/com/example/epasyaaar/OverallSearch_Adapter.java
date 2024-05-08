@@ -20,14 +20,13 @@ import java.util.List;
 public class OverallSearch_Adapter extends RecyclerView.Adapter<OverallSearch_Adapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList<OverallSearch_Data> list;
+    private List<OverallSearch_Data> list;
     private List<OverallSearch_Data> filteredList; // Add this line
-    private String selectedDocumentId; // Add this line
 
-    public OverallSearch_Adapter(Context context, ArrayList<OverallSearch_Data> list) {
+    public OverallSearch_Adapter(Context context, List<OverallSearch_Data> list) {
         this.context = context;
         this.list = list;
-        this.filteredList = new ArrayList<>(list); // Initialize filteredList with the full list
+        this.filteredList = new ArrayList<>(list); // Initialize filteredList with a copy of the full list
     }
 
     @NonNull
@@ -36,6 +35,7 @@ public class OverallSearch_Adapter extends RecyclerView.Adapter<OverallSearch_Ad
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_overall, parent, false);
         return new MyViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
@@ -46,30 +46,39 @@ public class OverallSearch_Adapter extends RecyclerView.Adapter<OverallSearch_Ad
             item = list.get(position);
         }
         holder.est_Name.setText(item.getName());
-        Picasso.get().load(item.getPhoto()).into(holder.est_Photo);
+        if (holder.est_Photo != null) {
+            Picasso.get().load(item.getPhoto()).into(holder.est_Photo);
+        } else {
+            Log.e("OverallSearch_Adapter", "ImageView is null");
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedDocumentId = item.getDocumentId2();
-                Class<?> destinationClass;
-                if (item.getCategory().equals("Tourist Spot")) {
-                    destinationClass = OverallSearch_TouristSpot.class;
-                } else {
-                    destinationClass = OverallSearch_Establishment.class;
+                OverallSearch_Data clickedItem = item; // Use the item directly
+
+                Class<?> destinationClass = null;
+                if (clickedItem.getCategory().equals("Tourist Spot")) {
+                    destinationClass = TouristSpots.class;
+                } else if (clickedItem.getCategory().equals("Hotel")) {
+                    destinationClass = Hotel.class;
+                } else if (clickedItem.getCategory().equals("Restaurant")) {
+                    destinationClass = Restaurant.class;
+                } else if (clickedItem.getCategory().equals("Souvenir Shop")) {
+                    destinationClass = Souvenir.class;
                 }
 
-                Intent intent = new Intent(v.getContext(), destinationClass);
-                intent.putExtra("documentId2", selectedDocumentId); // Use documentId_OS as the key
-                v.getContext().startActivity(intent);
-                Log.d("OverallSearch_Adapter", "Selected Document ID: " + selectedDocumentId);
-
+                if (destinationClass != null) {
+                    Intent intent = new Intent(v.getContext(), destinationClass);
+                    intent.putExtra("documentId", clickedItem.getDocumentId()); // Use clickedItem's documentId
+                    v.getContext().startActivity(intent);
+                    Log.d("OverallSearch_Adapter", "Selected Document ID: " + clickedItem.getDocumentId());
+                } else {
+                    Log.e("OverallSearch_Adapter", "Unknown category: " + clickedItem.getCategory());
+                }
             }
         });
-
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -85,23 +94,17 @@ public class OverallSearch_Adapter extends RecyclerView.Adapter<OverallSearch_Ad
         public TextView est_Name;
         public ImageView est_Photo;
 
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             est_Name = itemView.findViewById(R.id.overall_Name);
             est_Photo = itemView.findViewById(R.id.overall_Photo);
+
         }
     }
 
     public void setFilteredList(List<OverallSearch_Data> filteredList) {
         this.filteredList = filteredList;
         notifyDataSetChanged();
-    }
-
-    public String getSelectedDocumentId() {
-        return selectedDocumentId;
-    }
-
-    public void setSelectedDocumentId(String selectedDocumentId) {
-        this.selectedDocumentId = selectedDocumentId;
     }
 }

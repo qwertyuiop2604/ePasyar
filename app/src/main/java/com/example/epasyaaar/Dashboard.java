@@ -202,17 +202,51 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
 
                         Log.d("Dashboard", "Scanned document ID: " + contents);
 
+                        FirebaseFirestore.getInstance().collection("vigan_establishments").document(contents).get()
+                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        if (documentSnapshot.exists()) {
+                                            String category = documentSnapshot.getString("Category");
+                                            Intent intent = null;
+                                            switch (category) {
+                                                case "Tourist Spot":
+                                                    intent = new Intent(Dashboard.this, TouristSpots.class);
+                                                    break;
+                                                case "Hotel":
+                                                    intent = new Intent(Dashboard.this, Hotel.class);
+                                                    break;
+                                                case "Restaurant":
+                                                    intent = new Intent(Dashboard.this, Restaurant.class);
+                                                    break;
+                                                case "Souvenir Shop":
+                                                    intent = new Intent(Dashboard.this, Souvenir.class);
+                                                    break;
+                                            }
+                                            if (intent != null) {
+                                                intent.putExtra("documentId", contents);
+                                                intent.putExtra("numberOfTourists", numberOfTourists);
+                                                startActivity(intent);
+                                            } else {
+                                                Log.e("Dashboard", "Invalid category");
+                                            }
+                                        } else {
+                                            Log.e("Dashboard", "Document does not exist");
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.e("Dashboard", "Error retrieving document", e);
+                                    }
+                                });
+
                         Map<String, Object> scanData = new HashMap<>();
                         scanData.put("documentId", contents);
                         scanData.put("currentUserId", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                         FirestoreManager firestoreManager = new FirestoreManager();
                         firestoreManager.updateTotalScansAndUsers(scanData, scansToAdd);
-
-                        Intent intent = new Intent(Dashboard.this, TouristSpots.class);
-                        intent.putExtra("documentId", contents);
-                        intent.putExtra("numberOfTourists", numberOfTourists);
-                        startActivity(intent);
                     }
                 });
 

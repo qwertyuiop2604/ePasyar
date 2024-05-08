@@ -5,16 +5,16 @@ public class OverallSearch_Data {
     private String name;
     private String photo;
     private String category;
-    private String documentId2;
+    private String documentId;
 
     public OverallSearch_Data() {
     }
 
-    public OverallSearch_Data(String name, String photo, String category, String documentId2) {
+    public OverallSearch_Data(String name, String photo, String category, String documentId) {
         this.name = name;
         this.photo = photo;
         this.category = category;
-        this.documentId2 = documentId2;
+        this.documentId = documentId;
     }
 
     public String getName() {
@@ -41,12 +41,12 @@ public class OverallSearch_Data {
         this.category = category;
     }
 
-    public String getDocumentId2() {
-        return documentId2;
+    public String getDocumentId() {
+        return documentId;
     }
 
     public void setDocumentId2(String documentId2) {
-        this.documentId2 = documentId2;
+        this.documentId = documentId;
     }
 }
 

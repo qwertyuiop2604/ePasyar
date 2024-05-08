@@ -2,44 +2,42 @@ package com.example.epasyaaar;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
-import java.util.Map;
+public class Hotel extends AppCompatActivity {
 
-public class TouristSpots extends AppCompatActivity {
-
-    private static final String TAG = "TouristSpots";
+    private static final String TAG = "Hotels";
     private FirebaseFirestore db; // Firebase Firestore database instance
     private FirebaseAuth mAuth; // Firebase Authentication instance
     private String currentUserId; // ID of the current user
     private FirestoreManager firestoreManager; // Custom FirestoreManager class
 
-    Button review;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tourist_spots);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_hotel);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         db = FirebaseFirestore.getInstance(); // Initialize Firestore database
         mAuth = FirebaseAuth.getInstance(); // Initialize Firebase Authentication
-
-        boolean fromNavVisits = getIntent().getBooleanExtra("fromNavVis", false); // Assuming the default is false
 
         // Get the scanned document ID passed from the previous activity
         String documentId = getIntent().getStringExtra("documentId");
@@ -54,17 +52,36 @@ public class TouristSpots extends AppCompatActivity {
                     if (document.exists()) {
                         // Retrieve and display document fields
                         String name = document.getString("Name");
-                        String description = document.getString("Description");
+                        String owner = document.getString("Owner");
                         String photoUrl = document.getString("Photo");
+                        String number = document.getString("Contact Number");
+                        String email = document.getString("Email");
+                        String address = document.getString("Address");
+                        String rooms = document.getString("Rooms");
+                        String roomscap = document.getString("Capacity");
+                        String roomrate = document.getString("Room Rates");
 
                         // Display name and description
-                        TextView nameTextView = findViewById(R.id.TS_name);
-                        TextView descriptionTextView = findViewById(R.id.TS_description);
-                        nameTextView.setText(name);
-                        descriptionTextView.setText(description);
+                        TextView h_nameTV = findViewById(R.id.E_name);
+                        TextView h_ownerTV = findViewById(R.id.ownerName);
+                        TextView h_NumTV = findViewById(R.id.ownerContact);
+                        TextView h_emailTV = findViewById(R.id.ownerEmail);
+                        TextView h_addressTV = findViewById(R.id.ownerAddress);
+                        TextView h_roomsTV = findViewById(R.id.ownerRooms);
+                        TextView h_roomcapTV = findViewById(R.id.ownerRoomCap);
+                        TextView h_roomrateTV = findViewById(R.id.ownerRoomRates);
+
+                        h_nameTV.setText(name);
+                        h_ownerTV.setText(owner);
+                        h_NumTV.setText(number);
+                        h_emailTV.setText(email);
+                        h_addressTV.setText(address);
+                        h_roomsTV.setText(rooms);
+                        h_roomcapTV.setText(roomscap);
+                        h_roomrateTV.setText(roomrate);
 
                         // Load and display photo
-                        ImageView photoImageView = findViewById(R.id.TS_pic);
+                        ImageView photoImageView = findViewById(R.id.E_pic);
                         Picasso.get().load(photoUrl).into(photoImageView);
                     } else {
                         Log.d(TAG, "No such document");
@@ -77,14 +94,5 @@ public class TouristSpots extends AppCompatActivity {
             Log.e(TAG, "Document ID is null or empty");
             // Handle the case where documentId is null, maybe show an error message or finish the activity
         }
-
-        review = findViewById(R.id.btnWriteRev);
-        if (fromNavVisits) {
-            review.setVisibility(View.VISIBLE); // Hide the button
-        } else {
-            review.setVisibility(View.GONE); // Show the button
-        }
-
     }
-
 }

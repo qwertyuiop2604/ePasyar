@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:id="@+id/dashlogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:paddingTop="1dp">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/baseline_arrow_back_24"
+            android:layout_marginTop="15dp"
+            />
+
+        <TextView
+            android:id="@+id/e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_extrabold"
+            android:text="e"
+            android:textColor="@color/appblue"
+            android:textSize="35sp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/pasyar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/biorhyme_extrabold"
+            android:text="Pasyar"
+            android:textColor="@color/blue1"
+            android:textSize="40sp"
+            />
+
+    </LinearLayout>
+
+    <!-- Scroll view starts here -->
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!-- Your content inside the ScrollView -->
+        <include layout="@layout/item_review"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How was your experience, Kai-Vigan? Your opinion and feedback matters to further improve your stay in Vigan."
+            android:fontFamily="@font/alata"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating: "
+            android:fontFamily="@font/manjari"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+
+        <RatingBar
+            android:id="@+id/user_ratingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:layout_marginStart="-25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Review: "
+            android:fontFamily="@font/manjari"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/character_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="300/300"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:padding="5dp"/>
+
+        <EditText
+            android:id="@+id/user_review"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/outline"
+            android:fontFamily="@font/manjari"
+            android:textSize="12sp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:hint="Type your review here.."
+            android:gravity="top"
+            android:maxLength="300"/>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="10dp">
+
+    <Button
+        android:id="@+id/btn_Submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/yellow2"
+        android:fontFamily="@font/alata"
+        android:text="Submit"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:cornerRadius="10dp" />
+    </LinearLayout>
+</LinearLayout>

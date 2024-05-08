@@ -120,8 +120,8 @@ public class Events extends AppCompatActivity implements View.OnClickListener {
 
                             String name = document.getString("Name");
                             String description = document.getString("Description");
-
-                            EventData eventData = new EventData(name,description);
+                            String date = document.getString("Date");
+                            EventData eventData = new EventData(name,description, date);
                             list.add(eventData);
                             adapter.notifyDataSetChanged();
 

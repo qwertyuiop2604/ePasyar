@@ -13,9 +13,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="-1dp">
+        android:paddingTop="1dp">
 
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/baseline_arrow_back_24"
+            android:layout_marginTop="15dp"
+
+            />
 
         <TextView
             android:id="@+id/e"
@@ -28,8 +35,9 @@
             android:shadowRadius="2"
             android:text="e"
             android:textColor="@color/appblue"
-            android:textSize="35sp"/>
-
+            android:textSize="35sp"
+            android:layout_marginLeft="10dp"
+            />
 
         <TextView
             android:id="@+id/pasyar"
@@ -42,19 +50,11 @@
             android:shadowRadius="4"
             android:text="Pasyar"
             android:textColor="@color/blue1"
-            android:textSize="40sp"/>
-
+            android:textSize="40sp"
+            />
 
     </LinearLayout>
 
-
-    <ImageButton
-        android:id="@+id/menu"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/baseline_arrow_back_24"
-        android:layout_marginTop="10dp"
-        />
 
 
    <TextView

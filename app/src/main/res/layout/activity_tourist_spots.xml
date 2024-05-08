@@ -8,6 +8,7 @@
     tools:context=".TouristSpots"
     android:background="@color/white">
 
+
     <LinearLayout
         android:id="@+id/dashlogo"
         android:layout_width="match_parent"
@@ -23,7 +24,6 @@
             android:layout_height="35dp"
             android:background="@drawable/baseline_arrow_back_24"
             android:layout_marginTop="15dp"
-
             />
 
         <TextView
@@ -54,7 +54,6 @@
 
     </LinearLayout>
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -67,18 +66,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-
-            >
+            android:gravity="center_horizontal"
+            android:layout_marginTop="30dp">
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/TS_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-               android:layout_centerHorizontal="true"
                 android:fontFamily="@font/manjari_bold"
                 android:textAlignment="center"
+                android:layout_gravity="center"
                 android:text="Tourist Spot"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
@@ -91,6 +89,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/TS_Rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"/>
 
             <TextView
                 android:id="@+id/txt_descriptionTS"
@@ -120,12 +124,61 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ratings and Reviews"/>
+                android:text="Ratings and Reviews"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="left"
+                android:fontFamily="@font/manjari_bold"
+                android:textSize="18sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_review"
+                android:background="@drawable/outline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
-
-
-
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btnWriteRev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow2"
+            android:fontFamily="@font/manjari_bold"
+            android:text="Write a Review"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:cornerRadius="0dp" />
+    </LinearLayout>
+
+    <!-- Set the position of the "Navigate TS" button -->
+
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/navigate_TS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/location"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/yellow2"
+
+
+        />
 
 </RelativeLayout>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="5dp"
+    app:cardElevation="3dp"
     app:cardCornerRadius="15dp"
     android:layout_margin="16dp"
     android:background="@drawable/outline">
@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/overall_Photo"
+                android:id="@+id/review_Photo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="10dp"
@@ -29,7 +29,7 @@
 
 
             <TextView
-                android:id="@+id/overall_Name"
+                android:id="@+id/review_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -45,6 +45,7 @@
 
 
     </LinearLayout>
+
 
 
 

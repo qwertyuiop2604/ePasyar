@@ -6,11 +6,15 @@ public class EventData {
     private String photo;
     private String description;
 
+    private String date;
 
-    public EventData(String name, String description) {
+    public EventData(String name, String description,  String date){
+
+
         this.name = name;
         //this.photo = photo;
         this.description = description;
+        this.date = date;
     }
 
     public String getName() {
@@ -36,6 +40,16 @@ public class EventData {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
 
 
 

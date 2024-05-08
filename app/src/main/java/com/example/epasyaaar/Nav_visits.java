@@ -3,6 +3,7 @@ package com.example.epasyaaar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,8 @@ public class Nav_visits extends AppCompatActivity {
     private FirebaseFirestore firestoreDB;
 
     private ArrayList<nav_visitsData> list;
+
+    Button btnRate;
 
 
     @Override
@@ -69,8 +72,9 @@ public class Nav_visits extends AppCompatActivity {
                                             if (vTsDocument.exists()) {
                                                 String name = vTsDocument.getString("Name");
                                                 String photoUrl = vTsDocument.getString("Photo");
+                                                String category = vTsDocument.getString("Category");
 
-                                                nav_visitsData data = new nav_visitsData(documentId, name, photoUrl, timestamp);
+                                                nav_visitsData data = new nav_visitsData(documentId, name, photoUrl, timestamp, category);
                                                 list.add(data);
                                                 adapter.notifyDataSetChanged();
                                             } else {

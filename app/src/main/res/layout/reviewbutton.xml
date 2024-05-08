@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/btn_reviewlayout">
+
+
+        <Button
+            android:id="@+id/btnWriteRev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow2"
+            android:fontFamily="@font/manjari_bold"
+            android:text="Write a Review"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:cornerRadius="0dp" />
+
+
+
+
+    </LinearLayout>
+
+

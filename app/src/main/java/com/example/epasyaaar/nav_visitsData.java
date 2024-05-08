@@ -6,12 +6,15 @@ public class nav_visitsData {
     private String name;
     private String photo;
     private long timestamp;
+    private String category;
+    private boolean reviewSubmitted;
 
-    public nav_visitsData(String documentId, String name, String photo, long timestamp) {
+    public nav_visitsData(String documentId, String name, String photo, long timestamp, String category) {
         this.documentId = documentId;
         this.name = name;
         this.photo = photo;
         this.timestamp = timestamp;
+        this.category = category;
     }
 
     public String getDocumentId() {
@@ -44,5 +47,21 @@ public class nav_visitsData {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public boolean isReviewSubmitted() {
+        return reviewSubmitted;
+    }
+
+    public void setReviewSubmitted(boolean reviewSubmitted) {
+        this.reviewSubmitted = reviewSubmitted;
     }
 }

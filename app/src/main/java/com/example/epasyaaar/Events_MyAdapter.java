@@ -36,6 +36,7 @@ public class Events_MyAdapter extends RecyclerView.Adapter<Events_MyAdapter.MyVi
         EventData data = list.get(position);
         holder.textViewTitle.setText(data.getName());
         holder.textViewDescription.setText(data.getDescription());
+        holder.textViewDate.setText(data.getDate());
         //for festival photos
        // Picasso.get()
                 //.load(data.getPhoto())
@@ -52,13 +53,14 @@ public class Events_MyAdapter extends RecyclerView.Adapter<Events_MyAdapter.MyVi
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewTitle, textViewDescription;
+        TextView textViewTitle, textViewDescription, textViewDate;
         ImageView imageViewPhoto;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.event_name);
             imageViewPhoto = itemView.findViewById(R.id.event_pic);
+            textViewDate = itemView.findViewById(R.id.event_date);
             textViewDescription = itemView.findViewById(R.id.event_description);
         }
     }
