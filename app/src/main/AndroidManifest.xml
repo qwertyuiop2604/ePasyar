@@ -31,15 +31,7 @@
         <activity
             android:name=".UserReview"
             android:exported="false" />
-        <activity
-            android:name=".OverallSearch_Souvenir"
-            android:exported="false" />
-        <activity
-            android:name=".OverallSearch_Restaurant"
-            android:exported="false" />
-        <activity
-            android:name=".OverallSearch_Hotel"
-            android:exported="false" />
+
         <activity
             android:name=".Souvenir"
             android:exported="false" />
@@ -49,21 +41,14 @@
         <activity
             android:name=".Hotel"
             android:exported="false" />
-        <activity
-            android:name=".OverallSearch_Establishment"
-            android:exported="false" />
-        <activity
-            android:name=".OverallSearch_TouristSpot"
-            android:exported="false" />
+
         <activity
             android:name=".Establishment"
             android:exported="false" />
         <activity
             android:name=".OverallSearch"
             android:exported="false" />
-        <activity
-            android:name=".calendarsample"
-            android:exported="false" />
+
         <activity
             android:name=".Nav_visits"
             android:exported="false" />
@@ -76,9 +61,7 @@
         <activity
             android:name=".Nav_sched"
             android:exported="false" />
-        <activity
-            android:name=".calendar_sample"
-            android:exported="false" />
+
         <activity
             android:name=".Schedule"
             android:exported="false" />

@@ -50,7 +50,7 @@ public class nav_visits_MyAdapter extends RecyclerView.Adapter<nav_visits_MyAdap
                 .into(holder.imageViewPhoto);
 
         SharedPreferences prefs = context.getSharedPreferences("ReviewStatus", Context.MODE_PRIVATE);
-        boolean reviewSubmitted = prefs.getBoolean(clickedItem.getName(), false);
+        boolean reviewSubmitted = prefs.getBoolean(clickedItem.getName() + "_reviewed", false); // Unique identifier for each establishment
 
         // Show or hide review status TextView based on reviewSubmitted flag
         if (reviewSubmitted) {

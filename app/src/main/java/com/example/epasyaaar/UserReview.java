@@ -145,11 +145,14 @@ public class UserReview extends AppCompatActivity {
             }
 
 
-            SharedPreferences.Editor editor = getSharedPreferences("ReviewStatus", MODE_PRIVATE).edit();
-            editor.putBoolean("reviewSubmitted", true);
-            editor.apply();
 
         });
+
+
+        SharedPreferences.Editor editor = getSharedPreferences("ReviewStatus", MODE_PRIVATE).edit();
+        editor.putBoolean(establishmentName + "_reviewed", true); // Unique identifier for each establishment
+        editor.apply();
+
 
         retrieveEstablishmentforReview(establishmentName, establishmentPhotoUrl);
     }

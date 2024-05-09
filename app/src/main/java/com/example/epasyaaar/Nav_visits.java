@@ -78,7 +78,7 @@ public class Nav_visits extends AppCompatActivity {
                                                 list.add(data);
                                                 adapter.notifyDataSetChanged();
                                             } else {
-                                                Log.e(TAG, "Document does not exist in v_ts collection for document ID: " + documentId);
+                                                Log.e(TAG, "Document does not exist in vigan_establishment collection for document ID: " + documentId);
                                             }
                                         } else {
                                             Log.e(TAG, "Error getting document from v_ts collection", task1.getException());

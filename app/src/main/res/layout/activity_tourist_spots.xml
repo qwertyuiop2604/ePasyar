@@ -16,7 +16,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        android:paddingTop="1dp">
+        android:paddingTop="1dp"
+       >
 
         <ImageButton
             android:id="@+id/back"
@@ -67,7 +68,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:layout_margin="20dp">
 
             <TextView
                 android:gravity="center"
@@ -85,25 +87,15 @@
                 android:id="@+id/TS_pic"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
-                android:layout_below="@id/TS_name"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"/>
-
-            <androidx.appcompat.widget.AppCompatRatingBar
-                android:id="@+id/TS_Rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"/>
 
             <TextView
                 android:id="@+id/txt_descriptionTS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:layout_below="@id/TS_pic"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/biorhyme_extrabold"
+                android:fontFamily="@font/manjari_bold"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"/>
@@ -113,13 +105,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SAMPLE TEXT"
-                android:layout_below="@+id/txt_descriptionTS"
-                android:layout_centerHorizontal="true"
                 android:textAlignment="center"
-                android:fontFamily="@font/alata"
+                android:justificationMode="inter_word"
+                android:fontFamily="@font/manjari"
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,6 +123,39 @@
                 android:fontFamily="@font/manjari_bold"
                 android:textSize="18sp"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/TS_Rate"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:scaleX="0.75"
+                android:scaleY="0.75"/>
+
+                <TextView
+                    android:id="@+id/averageRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.8/5"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/totalReviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(74356 Reviews)"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"/>
+
+
+            </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_review"
                 android:background="@drawable/outline"
@@ -139,32 +164,8 @@
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>
+
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/btnWriteRev"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/yellow2"
-            android:fontFamily="@font/manjari_bold"
-            android:text="Write a Review"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:cornerRadius="0dp" />
-    </LinearLayout>
-
-    <!-- Set the position of the "Navigate TS" button -->
-
-
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -177,8 +178,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/yellow2"
-
-
         />
+
 
 </RelativeLayout>
